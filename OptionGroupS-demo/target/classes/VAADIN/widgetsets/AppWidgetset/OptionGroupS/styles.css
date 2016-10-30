@@ -67,7 +67,7 @@ div.OptionGroupS .slider.round {
 div.OptionGroupS .slider.round:before {
     border-radius: 50%;
 }
-div.OptionGroupS .font {
+div.OptionGroupS font {
     font-size: large;
     font-weight: bold;
 }

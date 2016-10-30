@@ -31,7 +31,7 @@ public class DemoUI extends UI
 
         // Initialize our new UI component
         // Initialize our new UI component
-        final OptionGroupS component = new OptionGroupS("Pick one", Arrays.asList("options", "available", "in", "flat", "select", "are", "plenty"));
+        final OptionGroupS component = new OptionGroupS("Please choose the options you want to activate: ", Arrays.asList("GPS", "Google Maps", "RFID", "TRY THIS", "HELLO"));
        
 
         component.addValueChangeListener(e -> Notification.show("You choosed "+component.getItemCaption(e.getProperty().getValue())));

@@ -88,7 +88,7 @@ public class OptionGroupSWidget extends VerticalPanel {
                     + "<body>\n"
                     + "\n"
                     + "<label class=\"switch\">\n"
-                    + "  <input type=\"checkbox\" checked>\n"
+                    + "  <input type=\"checkbox\">\n"
                     + "  <div class=\"slider round\"></div>"
                     + "</label>\n"
                     + "\n"
@@ -104,13 +104,6 @@ public class OptionGroupSWidget extends VerticalPanel {
 
                 }
             });
-        }
-    }
-
-    private static final class ShowOptionItems extends HorizontalPanel {
-
-        private ShowOptionItems(int index) {
-
         }
     }
 
@@ -151,6 +144,7 @@ public class OptionGroupSWidget extends VerticalPanel {
 
             if (!this.selectedOptions.contains(value)) {
                 this.selectedOptions.add(value);
+
             }
             panel = new FocusPanel();
             this.add(panel);
@@ -161,7 +155,8 @@ public class OptionGroupSWidget extends VerticalPanel {
             panel.addClickHandler(new ClickHandler() {
                 @Override
                 public void onClick(ClickEvent clickEvent) {
-                    callback.buttonClicked(((OptionItem)clickEvent.getSource()).index);
+                    callback.buttonClicked(((OptionItem) clickEvent.getSource()).index);
+
                 }
             });
         }
