@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 // This is the server-side UI component that provides public API 
 // for OptionGroupS
 public class OptionGroupS extends AbstractSelect {
-    
 
     private OptionGroupSServerRpc rpc = new OptionGroupSServerRpc() {
         @Override
@@ -23,21 +22,25 @@ public class OptionGroupS extends AbstractSelect {
     };
 
     public OptionGroupS() {
+        super.setMultiSelect(true);
         registerRpc(rpc);
     }
 
     public OptionGroupS(String caption) {
         super(caption);
+        super.setMultiSelect(true);
         registerRpc(rpc);
     }
 
     public OptionGroupS(String caption, Container source) {
         super(caption, source);
+        super.setMultiSelect(true);
         registerRpc(rpc);
     }
 
     public OptionGroupS(String caption, Collection<?> options) {
         super(caption, options);
+        super.setMultiSelect(true);
         registerRpc(rpc);
     }
 
@@ -45,6 +48,9 @@ public class OptionGroupS extends AbstractSelect {
     protected void setInternalValue(Object newValue) {
         super.setInternalValue(newValue);
         getState().latestChosen = new ArrayList<>(this.getContainerDataSource().getItemIds()).indexOf(newValue);
+        if (!getState().chosenOptions.contains(new ArrayList<>(this.getContainerDataSource().getItemIds()).indexOf(newValue))) {
+            getState().chosenOptions.add(new ArrayList<>(this.getContainerDataSource().getItemIds()).indexOf(newValue));
+        }
     }
 
     @Override

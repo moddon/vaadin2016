@@ -2,16 +2,9 @@ package com.motasim.optiongroups.client;
 
 import com.motasim.optiongroups.OptionGroupS;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Widget;
-import com.vaadin.client.MouseEventDetailsBuilder;
 import com.vaadin.client.communication.RpcProxy;
 import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.client.ui.AbstractComponentConnector;
-import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.shared.ui.Connect;
 
 // Connector binds client-side widget class to server-side component class

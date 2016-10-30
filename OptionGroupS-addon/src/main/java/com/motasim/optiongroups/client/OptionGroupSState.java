@@ -9,7 +9,7 @@ import java.util.List;
 public class OptionGroupSState extends AbstractSelectState {
 
     // State can have both public variable and bean properties
-    public String text = "HLLLLLLoooo";
+   
     public int latestChosen = -1;
     public List<Integer> chosenOptions = new ArrayList<>();
     public String[] options = new String[0];

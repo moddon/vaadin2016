@@ -1,22 +1,73 @@
 div.OptionGroupS {
-	cursor: pointer;
-	user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    font-size: large;
+    *font-weight: bold;
 }
 
-div.OptionGroupS button {
-	border: none;
-	text-decoration: none;
+
+/* The switch - the box around the slider */
+div.OptionGroupS .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
 }
 
-div.OptionGroupS button:hover {
-	text-decoration: underline;
-	color: blue;
+/* Hide default HTML checkbox */
+div.OptionGroupS .switch input {display:none;}
+
+/* The slider */
+div.OptionGroupS .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
-div.OptionGroupS .selected {
-	font-weight: bold;
-	color: navy;
+div.OptionGroupS .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+div.OptionGroupS input:checked + .slider {
+    background-color: #2196F3;
+}
+
+div.OptionGroupS input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+div.OptionGroupS input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+div.OptionGroupS .slider.round {
+    border-radius: 34px;
+}
+
+div.OptionGroupS .slider.round:before {
+    border-radius: 50%;
+}
+div.OptionGroupS font {
+    font-size: large;
+    font-weight: bold;
 }

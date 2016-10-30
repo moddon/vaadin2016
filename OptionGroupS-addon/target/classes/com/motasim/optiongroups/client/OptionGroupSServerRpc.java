@@ -1,6 +1,5 @@
 package com.motasim.optiongroups.client;
 
-import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.shared.communication.ServerRpc;
 
 // ServerRpc is used to pass events from client to server
