@@ -1,0 +1,22 @@
+div.OptionGroupS {
+	cursor: pointer;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+div.OptionGroupS button {
+	border: none;
+	text-decoration: none;
+}
+
+div.OptionGroupS button:hover {
+	text-decoration: underline;
+	color: blue;
+}
+
+div.OptionGroupS .selected {
+	font-weight: bold;
+	color: navy;
+}
