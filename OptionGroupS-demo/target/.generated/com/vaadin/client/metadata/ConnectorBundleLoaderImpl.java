@@ -2181,7 +2181,7 @@ public class ConnectorBundleLoaderImpl extends com.vaadin.client.metadata.Connec
             store.setPropertyType(com.vaadin.shared.ui.gridlayout.GridLayoutState.class, "childData", new Type("java.util.Map", new Type[] {new Type(com.vaadin.shared.Connector.class), new Type(com.vaadin.shared.ui.gridlayout.GridLayoutState.ChildComponentData.class), }));
             store.setPropertyType(com.vaadin.shared.ui.orderedlayout.AbstractOrderedLayoutState.class, "childData", new Type("java.util.HashMap", new Type[] {new Type(com.vaadin.shared.Connector.class), new Type(com.vaadin.shared.ui.orderedlayout.AbstractOrderedLayoutState.ChildComponentData.class), }));
             store.setPropertyType(com.vaadin.shared.ui.customlayout.CustomLayoutState.class, "childLocations", new Type("java.util.Map", new Type[] {new Type(com.vaadin.shared.Connector.class), new Type(java.lang.String.class), }));
-            store.setPropertyType(com.motasim.optiongroups.client.OptionGroupSState.class, "chosenOptions", new Type("java.util.List", new Type[] {new Type(java.lang.Integer.class), }));
+            store.setPropertyType(com.motasim.optiongroups.client.OptionGroupSState.class, "chosenOptionsIds", new Type("java.util.List", new Type[] {new Type(java.lang.Integer.class), }));
             store.setPropertyType(com.vaadin.shared.ui.flash.FlashState.class, "classId", new Type(java.lang.String.class));
             store.setPropertyType(com.vaadin.shared.ui.button.ButtonState.class, "clickShortcutKeyCode", new Type(java.lang.Integer.class));
             store.setPropertyType(com.vaadin.shared.MouseEventDetails.class, "clientX", new Type(java.lang.Integer.class));
@@ -3225,13 +3225,13 @@ public class ConnectorBundleLoaderImpl extends com.vaadin.client.metadata.Connec
             
             var data = {
               setter: function(bean, value) {
-                bean.@com.motasim.optiongroups.client.OptionGroupSState::chosenOptions = value;
+                bean.@com.motasim.optiongroups.client.OptionGroupSState::chosenOptionsIds = value;
               },
               getter: function(bean) {
-                return bean.@com.motasim.optiongroups.client.OptionGroupSState::chosenOptions;
+                return bean.@com.motasim.optiongroups.client.OptionGroupSState::chosenOptionsIds;
               }
             };
-            store.@com.vaadin.client.metadata.TypeDataStore::setPropertyData(Ljava/lang/Class;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)(@com.motasim.optiongroups.client.OptionGroupSState::class, 'chosenOptions', data);
+            store.@com.vaadin.client.metadata.TypeDataStore::setPropertyData(Ljava/lang/Class;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)(@com.motasim.optiongroups.client.OptionGroupSState::class, 'chosenOptionsIds', data);
             
             var data = {
               setter: function(bean, value) {

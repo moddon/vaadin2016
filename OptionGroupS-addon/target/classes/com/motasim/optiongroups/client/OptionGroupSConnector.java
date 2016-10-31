@@ -41,7 +41,7 @@ public class OptionGroupSConnector extends AbstractComponentConnector {
     @Override
     public void onStateChanged(StateChangeEvent stateChangeEvent) {
         super.onStateChanged(stateChangeEvent);
-        getWidget().setOptions(callback, getState().options, getState().chosenOptions);
+        getWidget().setOptions(callback, getState().options, getState().chosenOptionsIds);
 
     }
 }

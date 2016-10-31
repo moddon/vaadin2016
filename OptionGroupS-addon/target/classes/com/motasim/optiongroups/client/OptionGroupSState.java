@@ -8,7 +8,7 @@ import java.util.List;
 
 public class OptionGroupSState extends AbstractSelectState {
 
-    public List<Integer> chosenOptions = new ArrayList<Integer>();
+    public List<Integer> chosenOptionsIds = new ArrayList<Integer>();
     public String[] options = new String[0];
   
 }

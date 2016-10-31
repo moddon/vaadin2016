@@ -32,12 +32,12 @@ public class DemoUI extends UI
 
         // Initialize our new UI component
         // Initialize our new UI component
-        final OptionGroupS component = new OptionGroupS("Please choose the options you want to activate: ", Arrays.asList("GPS", "Google Maps", "RFID", "TRY THIS", "HELLO"));
+        final OptionGroupS component = new OptionGroupS("Please choose the features you want to activate: ", Arrays.asList("GPS", "Google Maps", "RFID", "TRY THIS", "HELLO"));
        
 
         component.addValueChangeListener(e -> Notification.show("Value changed:",
                 String.valueOf(e.getProperty().getValue()),
-                Type.HUMANIZED_MESSAGE));
+                Type.TRAY_NOTIFICATION));
  
  
         // Show it in the middle of the screen
