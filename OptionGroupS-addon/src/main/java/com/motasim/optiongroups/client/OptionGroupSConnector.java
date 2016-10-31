@@ -26,7 +26,7 @@ public class OptionGroupSConnector extends AbstractComponentConnector {
 
     // We must implement getWidget() to cast to correct type
     // (this will automatically create the correct widget type)
-    @Override
+      @Override
     public OptionGroupSWidget getWidget() {
         return (OptionGroupSWidget) super.getWidget();
     }
@@ -41,10 +41,7 @@ public class OptionGroupSConnector extends AbstractComponentConnector {
     @Override
     public void onStateChanged(StateChangeEvent stateChangeEvent) {
         super.onStateChanged(stateChangeEvent);
-        getWidget().setOptions(callback, getState().options, getState().latestChosen,getState().chosenOptions);
-        
-        if(!getState().chosenOptions.contains(getState().latestChosen)){
-        getState().chosenOptions.add(getState().latestChosen);
-        }
+        getWidget().setOptions(callback, getState().options, getState().chosenOptions);
+
     }
 }

@@ -1,73 +1,40 @@
-div.OptionGroupS {
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    font-size: large;
-    *font-weight: bold;
-}
-
-
-/* The switch - the box around the slider */
-div.OptionGroupS .switch {
-    position: relative;
+.OptionGroupS {
+    position: relative; width: 55px;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
 
-/* Hide default HTML checkbox */
-div.OptionGroupS .switch input {display:none;}
-
-/* The slider */
-div.OptionGroupS .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+.OptionGroupS:focus {
+    outline-style:none;
 }
 
-div.OptionGroupS .slider:before {
-    position: absolute;
+.OptionGroupS-checkbox {
+    display: none;
+}
+.OptionGroupS-slider {
+    display: block; overflow: hidden; cursor: pointer;
+    height: 27px; padding: 0; line-height: 27px;
+    border: 2px solid #CCCCCC; border-radius: 27px;
+    background-color: #FFFFFF;
+    transition: background-color 0.3s ease-in;
+}
+.OptionGroupS-slider:before {
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+    display: block; width: 27px; margin: 0px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 26px;
+    border: 2px solid #CCCCCC; border-radius: 27px;
+    transition: all 0.3s ease-in 0s; 
+}
+.OptionGroupS-slider.on {
+    background-color: #197CDD;
+    border-color: #197CDD;
 }
 
-div.OptionGroupS input:checked + .slider {
-    background-color: #2196F3;
-}
-
-div.OptionGroupS input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-}
-
-div.OptionGroupS input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-
-/* Rounded sliders */
-div.OptionGroupS .slider.round {
-    border-radius: 34px;
-}
-
-div.OptionGroupS .slider.round:before {
-    border-radius: 50%;
-}
-div.OptionGroupS font {
-    font-size: large;
-    font-weight: bold;
+.OptionGroupS-slider.on:before {  
+  border-color: #197CDD;
+  -webkit-transform: translateX(27px);
+  -ms-transform: translateX(27px);
+  transform: translateX(27px);
 }

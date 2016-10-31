@@ -34,7 +34,7 @@ public class DemoUI extends UI
         final OptionGroupS component = new OptionGroupS("Please choose the options you want to activate: ", Arrays.asList("GPS", "Google Maps", "RFID", "TRY THIS", "HELLO"));
        
 
-        component.addValueChangeListener(e -> Notification.show("You choosed "+component.getItemCaption(e.getProperty().getValue())));
+        component.addValueChangeListener(e -> Notification.show("You choosed "+component.getItem(e.getProperty().getValue())));
  
         // Show it in the middle of the screen
         final VerticalLayout layout = new VerticalLayout();

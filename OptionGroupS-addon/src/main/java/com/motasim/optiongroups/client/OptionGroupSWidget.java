@@ -1,14 +1,19 @@
 package com.motasim.optiongroups.client;
 
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.FocusWidget;
+import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import java.util.ArrayList;
 import java.util.List;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.FocusPanel;
 
 // Extend any GWT Widget
 public class OptionGroupSWidget extends VerticalPanel {
@@ -18,141 +23,95 @@ public class OptionGroupSWidget extends VerticalPanel {
         public void buttonClicked(int index);
     }
 
-    private static final class Switch extends HTML {
+    private static final class OptionItem extends FocusWidget implements HasValue<Boolean> {
 
-        public final int index;
-        public boolean activated = false;
-
-        private Switch(int index) {
-
-            this.index = index;
-            this.setHTML("<head>\n"
-                    + "<style>\n"
-                    + ".switch {\n"
-                    + "  position: relative;\n"
-                    + "  display: inline-block;\n"
-                    + "  width: 60px;\n"
-                    + "  height: 34px;\n"
-                    + "}\n"
-                    + "\n"
-                    + ".switch input {display:none;}\n"
-                    + "\n"
-                    + ".slider {\n"
-                    + "  position: absolute;\n"
-                    + "  cursor: pointer;\n"
-                    + "  top: 0;\n"
-                    + "  left: 0;\n"
-                    + "  right: 0;\n"
-                    + "  bottom: 0;\n"
-                    + "  background-color: #ccc;\n"
-                    + "  -webkit-transition: .4s;\n"
-                    + "  transition: .4s;\n"
-                    + "}\n"
-                    + "\n"
-                    + ".slider:before {\n"
-                    + "  position: absolute;\n"
-                    + "  content: \"\";\n"
-                    + "  height: 26px;\n"
-                    + "  width: 26px;\n"
-                    + "  left: 4px;\n"
-                    + "  bottom: 4px;\n"
-                    + "  background-color: white;\n"
-                    + "  -webkit-transition: .4s;\n"
-                    + "  transition: .4s;\n"
-                    + "}\n"
-                    + "\n"
-                    + "input:checked + .slider {\n"
-                    + "  background-color: #2196F3;\n"
-                    + "}\n"
-                    + "\n"
-                    + "input:focus + .slider {\n"
-                    + "  box-shadow: 0 0 1px #2196F3;\n"
-                    + "}\n"
-                    + "\n"
-                    + "input:checked + .slider:before {\n"
-                    + "  -webkit-transform: translateX(26px);\n"
-                    + "  -ms-transform: translateX(26px);\n"
-                    + "  transform: translateX(26px);\n"
-                    + "}\n"
-                    + "\n"
-                    + "/* Rounded sliders */\n"
-                    + ".slider.round {\n"
-                    + "  border-radius: 34px;\n"
-                    + "}\n"
-                    + "\n"
-                    + ".slider.round:before {\n"
-                    + "  border-radius: 50%;\n"
-                    + "}\n"
-                    + "</style>\n"
-                    + "</head>\n"
-                    + "<body>\n"
-                    + "\n"
-                    + "<label class=\"switch\">\n"
-                    + "  <input type=\"checkbox\">\n"
-                    + "  <div class=\"slider round\"></div>"
-                    + "</label>\n"
-                    + "\n"
-                    + "</body>\n"
-                    + "</html>\n"
-                    + "");
-
-            this.addClickHandler(new ClickHandler() {
-
-                public void onClick(ClickEvent clickEvent) {
-
-                    activated = (!activated);
-
-                }
-            });
-        }
-    }
-
-    private static final class OptionItem extends HorizontalPanel {
-
+        private Element slider;
         private final int index;
-        private Switch sw;
+        private boolean value = false;
+
+//        @Override
+//        public HandlerRegistration addClickHandler(ClickHandler handler) {
+//            this.setValue(!this.getValue(),true);
+//            return super.addClickHandler(handler); //To change body of generated methods, choose Tools | Templates.
+//        }
 
         private OptionItem(String caption, int index) {
+
             this.index = index;
-            sw = new Switch(index);
-            this.add(sw);
 
-            Label optionLabel = new Label();
+            setElement(Document.get().createDivElement());
+            setStyleName("OptionGroupS");
 
-            optionLabel.setText(caption);
-            optionLabel.addStyleName("font");
+            slider = Document.get().createLabelElement();
+            slider.setClassName("OptionGroupS-slider");
 
-            this.add(optionLabel);
-
-            this.setSpacing(5);
+            getElement().appendChild(slider);
+            updateStyleName(false);
 
         }
 
+        private void updateStyleName(boolean isChecked) {
+            if (isChecked) {
+                slider.addClassName("on");
+                slider.removeClassName("off");
+            } else {
+                slider.addClassName("off");
+                slider.removeClassName("on");
+            }
+        }
+
+        @Override
+        public HandlerRegistration addValueChangeHandler(ValueChangeHandler<Boolean> handler) {
+            return addHandler(handler, ValueChangeEvent.getType());
+        }
+
+        @Override
+        public Boolean getValue() {
+            return value;
+        }
+
+        @Override
+        public void setValue(Boolean value) {
+            setValue(value, false);
+        }
+
+        @Override
+        public void setValue(Boolean value, boolean fireEvents) {
+            if (value == null) {
+                value = Boolean.FALSE;
+            }
+            if (this.value != value) {
+                this.value = value;
+                updateStyleName(value);
+                if (fireEvents) {
+                    ValueChangeEvent.fire(this, value);
+                }
+            }
+        }
     }
-    public List<Integer> selectedOptions = new ArrayList<>();
 
-    public void setOptions(final Callback callback, String[] options, int value, List<Integer> selectedOptions) {
+    public void setOptions(final Callback callback, String[] options, List<Integer> value) {
         this.clear();
-
-        this.selectedOptions = selectedOptions;
-        FocusPanel panel = null;
-        panel = new FocusPanel();
-
-        this.add(panel);
+        HorizontalPanel panel = null;
 
         for (int i = 0; i < options.length; i++) {
 
-            if (!this.selectedOptions.contains(value)) {
-                this.selectedOptions.add(value);
-
+            {
+                panel = new HorizontalPanel();
+                this.add(panel);
             }
-            panel = new FocusPanel();
-            this.add(panel);
 
             OptionItem item = new OptionItem(options[i], i);
-            panel.add(item);
 
-            panel.addClickHandler(new ClickHandler() {
+            panel.add(item);
+            if (value.contains(i)) {
+                item.setValue(true,true);
+                item.updateStyleName(true);
+            } else {
+                item.setValue(false,true);
+                item.updateStyleName(false);
+            }
+            item.addClickHandler(new ClickHandler() {
                 @Override
                 public void onClick(ClickEvent clickEvent) {
                     callback.buttonClicked(((OptionItem) clickEvent.getSource()).index);
@@ -160,7 +119,6 @@ public class OptionGroupSWidget extends VerticalPanel {
                 }
             });
         }
-
     }
 
 }

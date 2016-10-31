@@ -3,10 +3,12 @@ package com.motasim.optiongroups;
 import com.motasim.optiongroups.client.OptionGroupSServerRpc;
 import com.motasim.optiongroups.client.OptionGroupSState;
 import com.vaadin.data.Container;
+import com.vaadin.data.Property;
 
 import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.ui.AbstractSelect;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -45,26 +47,25 @@ public class OptionGroupS extends AbstractSelect {
     }
 
     @Override
-    protected void setInternalValue(Object newValue) {
-        super.setInternalValue(newValue);
-        getState().latestChosen = new ArrayList<>(this.getContainerDataSource().getItemIds()).indexOf(newValue);
-        if (!getState().chosenOptions.contains(new ArrayList<>(this.getContainerDataSource().getItemIds()).indexOf(newValue))) {
-            getState().chosenOptions.add(new ArrayList<>(this.getContainerDataSource().getItemIds()).indexOf(newValue));
-        }
-    }
-
-    @Override
     public void setMultiSelect(boolean multiSelect) {
-        multiSelect = true;
+       
         super.setMultiSelect(multiSelect);
     }
 
     private void selectedItemAtIndex(int index) {
-        if (index < 0 || index >= this.getContainerDataSource().size()) {
-            setValue(null);
+
+        super.select(index);
+        if (getState().chosenOptions.contains(index)) {
+            unselect(index);
+           getState().chosenOptions.removeIf(x -> x.equals(index));
         } else {
-            setValue(new ArrayList<>(this.getContainerDataSource().getItemIds()).get(index));
+            getState().chosenOptions.add(index);
         }
+    }
+
+    @Override
+    public void unselect(Object itemId) {
+        super.unselect(itemId);
     }
 
     private void updateOptions() {
@@ -72,11 +73,15 @@ public class OptionGroupS extends AbstractSelect {
                 = this.getContainerDataSource() != null && this.getContainerDataSource().size() > 0
                         ? this.getContainerDataSource().getItemIds().stream().map(this::getItemCaption).collect(Collectors.toList()).toArray(new String[0])
                         : new String[0];
-        if (getState(false).latestChosen >= getState(false).options.length) {
-            setValue(null);
-        } else {
-            selectedItemAtIndex(getState(false).latestChosen);
+    }
+
+    @Override
+    public void setValue(Object newValue) throws Property.ReadOnlyException {
+        if (newValue == getNullSelectionItemId()) {
+            newValue = null;
         }
+
+        setValue(newValue, false);
     }
 
     @Override
