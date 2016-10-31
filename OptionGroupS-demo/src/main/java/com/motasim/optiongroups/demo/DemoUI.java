@@ -14,6 +14,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import java.util.Arrays;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.Notification.Type;
 
 @Theme("demo")
 @Title("OptionGroupS Add-on Demo")
@@ -34,7 +35,10 @@ public class DemoUI extends UI
         final OptionGroupS component = new OptionGroupS("Please choose the options you want to activate: ", Arrays.asList("GPS", "Google Maps", "RFID", "TRY THIS", "HELLO"));
        
 
-        component.addValueChangeListener(e -> Notification.show("You choosed "+component.getItem(e.getProperty().getValue())));
+        component.addValueChangeListener(e -> Notification.show("Value changed:",
+                String.valueOf(e.getProperty().getValue()),
+                Type.HUMANIZED_MESSAGE));
+ 
  
         // Show it in the middle of the screen
         final VerticalLayout layout = new VerticalLayout();

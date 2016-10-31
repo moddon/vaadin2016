@@ -61,6 +61,7 @@ public class OptionGroupS extends AbstractSelect {
         } else {
             getState().chosenOptions.add(index);
         }
+        setValue(getState().chosenOptions);
     }
 
     @Override
