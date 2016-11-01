@@ -4,7 +4,7 @@ ${ComponentClassName} is a UI component add-on for Vaadin 7.
 
 ## Online demo
 
-Try the add-on demo at <url of the online demo>
+Try the add-on demo at <https://optionsgroup-switch.herokuapp.com/>
 
 ## Download release
 
@@ -12,12 +12,19 @@ Official releases of this add-on are available at Vaadin Directory. For Maven in
 
 ## Building and running demo
 
-git clone <url of the OptionGroupS repository>
+git clone <https://github.com/moddon/vaadin2016>
 mvn clean install
 cd demo
 mvn jetty:run
 
-To see the demo, navigate to http://localhost:8080/
+To see the demo, navigate tohttps://optionsgroup-switch.herokuapp.com/
+
+## TODO list
+
+- Refactor
+- support more styling
+- change value from just indexes of selected options to a more general Object with few properties 
+
 
 ## Development with Eclipse IDE
 
@@ -53,7 +60,6 @@ Debugging client side code in the OptionGroupS-demo project:
 
 ### Version 1.0-SNAPSHOT
 - ...
-- ...
 
 ## Roadmap
 
@@ -87,24 +93,21 @@ OptionGroupS is written by <...>
 
 Here is a simple example on how to try out the add-on component:
 
-<...>
+<
+final OptionGroupS component = new OptionGroupS(String_caption, Container_options);
+       
+
+        component.addValueChangeListener(e -> Notification.show("Value changed:",
+                String.valueOf(e.getProperty().getValue()),
+                Type.TRAY_NOTIFICATION));
+ >
 
 For a more comprehensive example, see src/test/java/org/vaadin/template/demo/DemoUI.java
 
 ## Features
 
-### Feature A
-
-<...>
-
-### Feature B
-
-<...>
-
-### Feature C
-
-<...>
 
 ## API
 
 OptionGroupS JavaDoc is available online at <...>
+
