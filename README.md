@@ -9,7 +9,7 @@ Try the add-on demo at <https://optionsgroup-switch.herokuapp.com/>
 
 ## Download release
 
-Official releases of this add-on are available at Vaadin Directory. For Maven instructions, download and reviews, go to http://vaadin.com/addon/OptionGroupS
+Official add-on will be added later to the vaadin directory
 
 ## Building and running demo
 
