@@ -1,6 +1,7 @@
 # OptionGroupS Add-on for Vaadin 7
 
-${ComponentClassName} is a UI component add-on for Vaadin 7.
+OptionGroupS is a UI component add-on for Vaadin 7. Inspired by the Vaadin OptionGroup componenet vaadin-onoffswitch-addon at https://github.com/basakpie/vaadin-onoffswitch-addon by basakpie.
+this add on was developed as a university project at Turku University
 
 ## Online demo
 
