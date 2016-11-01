@@ -95,8 +95,8 @@ OptionGroupS is written by <...>
 Here is a simple example on how to try out the add-on component:
 
 <
-final OptionGroupS component = new OptionGroupS(String_caption, Container_options);
-       
+
+final OptionGroupS component = new OptionGroupS(String_caption, Container_options);    
 
         component.addValueChangeListener(e -> Notification.show("Value changed:",
                 String.valueOf(e.getProperty().getValue()),
