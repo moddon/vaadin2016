@@ -1,11 +1,11 @@
 # OptionGroupS Add-on for Vaadin 7
 
-OptionGroupS is a UI component add-on for Vaadin 7. Inspired by the Vaadin OptionGroup componenet vaadin-onoffswitch-addon at https://github.com/basakpie/vaadin-onoffswitch-addon by basakpie.
-this add on was developed as a university project at Turku University
+OptionGroupS is a UI component add-on for Vaadin 7. Inspired by the Vaadin OptionGroup componenet and vaadin-onoffswitch-addon at https://github.com/basakpie/vaadin-onoffswitch-addon by basakpie.
+This add on was developed as a university project at Turku University and it allows you to have the Option Group UI element with the on-off switches instead of radio buttons or checkboxes.
 
 ## Online demo
 
-Try the add-on demo at <https://optionsgroup-switch.herokuapp.com/>
+Try this UI component add-on demo at <https://optionsgroup-switch.herokuapp.com/>
 
 ## Download release
 
